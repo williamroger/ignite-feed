@@ -5,6 +5,55 @@ import { Sidebar } from './components/Sidebar';
 import './global.css';
 import styles from './App.module.css';
 
+const posts = [
+  {
+    id: 1,
+    author: {
+      avatarUrl: 'https://github.com/williamroger.png',
+      name: 'William Roger',
+      role: 'CTO @studius'
+    },
+    content: [
+      {
+        type: 'paragraph',
+        content: 'Fala galeraa 👋',
+      },
+      {
+        type: 'paragraph',
+        content: 'Acabei de subir mais um projeto no meu portifa. É um projeto que fiz no NLW Return, evento da Rocketseat. O nome do projeto é DoctorCare 🚀',
+      },
+      {
+        type: 'link',
+        content: 'jane.design/doctorcare'
+      }, 
+    ],
+    publishedAt: new Date('2023-05-17 12:00:00'),
+  },
+  {
+    id: 2,
+    author: {
+      avatarUrl: 'https://github.com/diego3g.png',
+      name: 'Diego Fernandes',
+      role: 'CTO @rocketseat'
+    },
+    content: [
+      {
+        type: 'paragraph',
+        content: 'Fala galeraa 👋',
+      },
+      {
+        type: 'paragraph',
+        content: 'Acabei de subir mais um projeto no meu portifa. É um projeto que fiz no NLW Return, evento da Rocketseat. O nome do projeto é DoctorCare 🚀',
+      },
+      {
+        type: 'link',
+        content: 'jane.design/doctorcare'
+      },
+    ],
+    publishedAt: new Date('2023-05-16 12:00:00'),
+  },
+];
+
 function App() {
   return (
     <div>
@@ -14,14 +63,15 @@ function App() {
         <Sidebar />
         
         <main>
-          <Post
-            author="William Roger"
-            content="Conteúdo do meu post maneiro."
-          />
-          <Post
-            author="William Roger"
-            content="Conteúdo do meu post maneiro."
-          />
+          {posts.map(post => {
+            return (
+              <Post 
+                author={post.author}
+                content={post.content}
+                publishedAt={post.publishedAt}
+              />
+            )
+          })}
         </main>
       </div>
     </div>
